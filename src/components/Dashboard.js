@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GalleryOptions from "./GalleryOptions";
 import GalleryList from "./GalleryList";
+import {forceCheck} from "react-lazyload";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Dashboard extends Component {
   handleFilterChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
-    });
+    },() => forceCheck());
   };
 
   render() {

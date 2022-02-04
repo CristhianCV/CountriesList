@@ -25,7 +25,7 @@ class CountryDetail extends Component {
   componentDidMount = () => {
     axios
       .get(
-        `https://restcountries.eu/rest/v2/name/${this.props.match.params.id}?fullText=true`
+        `https://restcountries.com/v2/name/${this.props.match.params.id}?fullText=true`
       )
       .then((response) => {
         this.setState({
@@ -35,9 +35,9 @@ class CountryDetail extends Component {
           return Promise.resolve([]);
         } else {
           return axios.get(
-            `https://restcountries.eu/rest/v2/alpha?codes=${response.data[0].borders.join(
+            `https://restcountries.com/v2/alpha?codes=${response.data[0].borders.join(
               ";"
-            )}&fields=name;cioc`
+            )}&fields=name,cioc`
           );
         }
       })

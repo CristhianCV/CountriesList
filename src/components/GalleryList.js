@@ -16,7 +16,7 @@ class GalleryList extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://restcountries.eu/rest/v2/all?fields=numericCode;name;population;region;capital;flag"
+        "https://restcountries.com/v2/all?fields=numericCode,name,population,region,capital,flag"
       )
       .then((response) => {
         this.setState({
@@ -42,7 +42,7 @@ class GalleryList extends Component {
                 (region === "All" || country.region === region)
             )
             .map((country) => (
-              <LazyLoad height={200}>
+              <LazyLoad height={200} key={country.numericCode}>
                 <CountrySummary
                   key={country.numericCode}
                   country={country}
