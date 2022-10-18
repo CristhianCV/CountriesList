@@ -1,0 +1,10 @@
+.toolbar-title {
+    flex-grow: 1;
+    text-align: start;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+}
+
+.toolbar-button {
+    text-transform: initial !important;
+}

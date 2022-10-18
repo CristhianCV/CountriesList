@@ -1,12 +1,16 @@
-import React, { Component } from "react";
-import "./App.css";
-import Dashboard from "./components/Dashboard";
-import Navbar from "./components/Navbar";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import ThemeContext, { themes } from "./components/ThemeContext";
 import { CssBaseline } from "@material-ui/core";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import CountryDetail from "./components/CountryDetail";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import React, { Component } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import "./App.css";
+import CountryDetail from "./pages/country-detail";
+import Dashboard from "./pages/dashboard";
+import Navbar from "./components/navbar";
+import ThemeContext, { themes } from "./context/theme-context";
+
+const queryClient = new QueryClient();
 
 export class App extends Component {
   constructor(props) {
@@ -38,20 +42,22 @@ export class App extends Component {
     });
 
     return (
-      <BrowserRouter>
-        <div className="App">
-          <ThemeContext.Provider value={this.state}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline></CssBaseline>
-              <Navbar></Navbar>
-              <Switch>
-                <Route path="/" exact component={Dashboard}></Route>
-                <Route path="/country/:id" component={CountryDetail}></Route>
-              </Switch>
-            </ThemeProvider>
-          </ThemeContext.Provider>
-        </div>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <div className="App">
+            <ThemeContext.Provider value={this.state}>
+              <ThemeProvider theme={theme}>
+                <CssBaseline></CssBaseline>
+                <Navbar></Navbar>
+                <Switch>
+                  <Route path="/" exact component={Dashboard}></Route>
+                  <Route path="/country/:id" component={CountryDetail}></Route>
+                </Switch>
+              </ThemeProvider>
+            </ThemeContext.Provider>
+          </div>
+        </BrowserRouter>
+      </QueryClientProvider>
     );
   }
 }

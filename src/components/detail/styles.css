@@ -1,0 +1,12 @@
+.detail {
+    display: flex;
+    padding: 4px 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.detail-title {
+    font-weight: 700 !important;
+    padding-right: 5px;
+}
+

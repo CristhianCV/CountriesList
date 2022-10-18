@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
 import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import ThemeContext from "./ThemeContext";
+import React, { useContext } from "react";
+
+import ThemeContext from "../../context/theme-context";
+import "./styles.css";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -17,6 +19,9 @@ export default function Navbar() {
             variant="h6"
             className="toolbar-title"
           >
+            <span role="img" aria-label="World icon">
+              🌐
+            </span>
             Where in the world?
           </Typography>
           <Button

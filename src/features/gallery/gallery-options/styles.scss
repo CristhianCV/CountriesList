@@ -1,0 +1,43 @@
+.gallery-options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 700px) {
+    .gallery-options {
+        flex-direction: column;
+    }
+
+    .gallery-options-search {
+        flex-grow: 1;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .gallery-options {
+        flex-direction: row;
+    }
+
+    .gallery-options-search {
+        width: 320px;
+    }
+}
+
+.gallery-options-search,
+.gallery-options-region {
+    margin-bottom: 24px !important;
+}
+
+.gallery-options-region {
+    align-items: center;
+    display: flex;
+
+    &>p {
+        margin-right: 8px;
+    }
+
+    &>.MuiFormControl-root {
+        min-width: 120px !important;
+    }
+}
